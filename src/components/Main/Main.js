@@ -9,7 +9,7 @@ class Main extends Component {
     state = {
         dogImages: [],
         dogBreeds: [],
-        searchBreed: ""
+        breedName: ""
     };
 
     // Gets called once the component gets mounted to the DOM
@@ -44,7 +44,7 @@ class Main extends Component {
                 .then(res => {
                     // console.log(res.data);
                     // Use setState method to update the component's state
-                    this.setState({ dogImages: res.data.message })
+                    this.setState({ dogImages: res.data.message, breedName: subBreed })
                 })
                 .catch(err => {
                     console.log(err);
@@ -52,12 +52,17 @@ class Main extends Component {
         } else {
             API.getByBreed(subBreed)
             .then(res => {
-                this.setState({ dogImages: res.data.message })
+                this.setState({ dogImages: res.data.message, breedName: subBreed })
             })
             .catch(err => {
                 console.log(err);
             });
         }
+    };
+
+    closeMenu = event => {
+        const sidebar = document.querySelector('[data-sidebar]');
+        sidebar.classList.toggle('gds-persist-nav__sidebar--toggle');
     };
 
     render() {
@@ -66,8 +71,12 @@ class Main extends Component {
                 <List
                     handleClick={this.handleClick} 
                     dogBreeds={this.state.dogBreeds}
+                    closeMenu={this.closeMenu}
                 />
-                <Result dogImages={this.state.dogImages} />
+                <Result 
+                    dogImages={this.state.dogImages}
+                    breedName={this.state.breedName}
+                />
             </div>
         );
     }

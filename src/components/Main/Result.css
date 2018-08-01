@@ -1,0 +1,13 @@
+.gds-flex-grid__item--full-height {
+    height: 350px;
+}
+
+.dog-image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+.gds-card__block {
+    padding: 0;
+}

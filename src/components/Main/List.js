@@ -37,7 +37,7 @@ const List = props => {
                 })}
             </ul>
         </aside>
-        <div className="gds-persist-nav__mobile-close" data-sidebar-toggle=""></div>
+        <div className="gds-persist-nav__mobile-close" data-sidebar-toggle="" onClick={props.closeMenu}></div>
         </React.Fragment>
     );
 };
